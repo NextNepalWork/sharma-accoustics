@@ -135,10 +135,12 @@ import ErrorHandling from './../../ErrorHandling'
 						this.$router.push('/admin/dashboard');
 					}
 					else if (res.data.status = 'Error') {
+						console.log('here');
 						this.error_message = res.data.message;
 					}
 				}).catch(error => {
 					this.error_message = '';
+						console.log('there');
 					this.errors = new ErrorHandling();
 					if (error.response.status == 422) {
 						if(error.response.data.status == 'Error'){
