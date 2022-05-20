@@ -124,9 +124,9 @@
     <!-- Blogs Ends -->
 
     @foreach (homePageBuilderJson() as $template)
-    @if (!$template['skip'] && $template['display'])
-    @include('sections.home-'.$template['template_postfix'].'-section')
-    @endif  
+        @if (!$template['skip'] && $template['display'])
+            @include('sections.home-'.$template['template_postfix'].'-section')
+        @endif  
     @endforeach
     
     
@@ -509,7 +509,9 @@
                             '</div>';
                         });
                         $('#slider-section').html(sliderSection);
-                        slickInit();
+                        setTimeout(() => {
+                            slickInit();
+                        }, 1000);
                     }
                 },
                 error: function(data) {
