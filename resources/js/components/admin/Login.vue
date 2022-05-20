@@ -104,8 +104,10 @@ import ErrorHandling from './../../ErrorHandling'
 					password: this.password
 				})
 				.then(res => {
+						console.log('c');
 					// // console.log(res.data.user.warehouses);
 					if (res.data.status == 'Success') {
+						console.log('b');
 						var warehouse = [];
 						
 						res.data.user.warehouses.forEach(w => {
@@ -121,6 +123,7 @@ import ErrorHandling from './../../ErrorHandling'
 						this.$router.push('/admin/dashboard');
 					}
 					else if (res.data.status == 'Warning') {
+						console.log('a');
 						var warehouse = [];
 						res.data.user.warehouses.forEach(w => {
 							warehouse.push(w.id)
