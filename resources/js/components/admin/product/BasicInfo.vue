@@ -176,7 +176,6 @@
                         id="label-textarea"
                         :name="'desc' + index"
                         v-on:input="setDesc($event.target.value, language.id)"
-                        rows="6"  
                         v-model="desc[language.id]"
                         placeholder="Description"
                         spellcheck="false"
@@ -231,8 +230,9 @@
 
 <script>
 import Multiselect from 'vue-multiselect'
+import { VueEditor } from "vue2-editor";
 export default {
-  components: { Multiselect },
+  components: { Multiselect,VueEditor },
   data() {
     return {
       categories: [],
