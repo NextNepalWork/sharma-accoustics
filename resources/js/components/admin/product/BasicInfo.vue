@@ -125,6 +125,21 @@
             </ul>
             <div class="row">
 
+              <div class="col-md-12 col-12">
+                <div class="form-group">
+                  <label class="text-dark">Video URL</label>
+                  <input
+                    type="text"
+                    v-on:input="setVideoUrl($event.target.value)"
+                    class="form-control" v-model="video_url"
+                  />
+                  <small
+                    class="form-text text-danger"
+                    v-if="errors.has('video_url')"
+                    v-text="errors.get('video_url')"
+                  ></small>
+                </div>
+              </div>
               <div class="col-12">
                 <div class="tab-content lang-content" id="v-pills-tabContent">
                   <div
@@ -187,21 +202,6 @@
                       ></small>
                     </fieldset>
                   </div>
-                </div>
-              </div>
-              <div class="col-md-12 col-12">
-                <div class="form-group">
-                  <label class="text-dark">Video URL</label>
-                  <input
-                    type="text"
-                    v-on:input="setVideoUrl($event.target.value)"
-                    class="form-control" v-model="video_url"
-                  />
-                  <small
-                    class="form-text text-danger"
-                    v-if="errors.has('video_url')"
-                    v-text="errors.get('video_url')"
-                  ></small>
                 </div>
               </div>
             </div>
