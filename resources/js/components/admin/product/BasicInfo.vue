@@ -157,7 +157,7 @@
                       Description ( {{ language.language_name }} )
                     </h6>
                     <fieldset class="form-group mb-3">
-                      <textarea
+                      <vue-editor 
                         id="label-textarea"
                         :name="'desc' + index"
                         v-on:input="setDesc($event.target.value, language.id)"
@@ -168,7 +168,19 @@
                         spellcheck="false"
                         class="form-control"
                         style="height: 130px"
-                      ></textarea>
+                        ></vue-editor>
+                      <!-- <textarea
+                        id="label-textarea"
+                        :name="'desc' + index"
+                        v-on:input="setDesc($event.target.value, language.id)"
+                        rows="6"
+                        name="notes"
+                        v-model="desc[language.id]"
+                        placeholder="Description"
+                        spellcheck="false"
+                        class="form-control"
+                        style="height: 130px"
+                      ></textarea> -->
                       <small
                         class="form-text text-danger"
                         v-if="errors.has('desc')"
@@ -220,8 +232,9 @@
 
 <script>
 import Multiselect from 'vue-multiselect'
+import { VueEditor } from "vue2-editor";
 export default {
-  components: { Multiselect },
+  components: { Multiselect,VueEditor },
   data() {
     return {
       categories: [],
