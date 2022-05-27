@@ -231,9 +231,8 @@
 
 <script>
 import Multiselect from 'vue-multiselect'
-import { VueEditor } from "vue2-editor";
 export default {
-  components: { Multiselect,VueEditor },
+  components: { Multiselect },
   data() {
     return {
       categories: [],
