@@ -162,7 +162,6 @@
                         :name="'desc' + index"
                         v-on:input="setDesc($event.target.value, language.id)"
                         rows="6"
-                        name="notes"
                         v-model="desc[language.id]"
                         placeholder="Description"
                         spellcheck="false"
