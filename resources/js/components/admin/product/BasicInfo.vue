@@ -172,18 +172,18 @@
                       Description ( {{ language.language_name }} )
                     </h6>
                     <fieldset class="form-group mb-3">
-                      <vue-editor 
+                      <!-- <vue-editor 
                         id="label-textarea"
-                        name="desc"
+                        :name="'desc' + index"
                         v-on:input="setDesc($event.target.value, language.id)"
-                        rows="6"
+                        rows="6"  
                         v-model="desc[language.id]"
                         placeholder="Description"
                         spellcheck="false"
                         class="form-control"
                         style="height: 130px"
-                        ></vue-editor>
-                      <!-- <textarea
+                        ></vue-editor> -->
+                      <textarea
                         id="label-textarea"
                         :name="'desc' + index"
                         v-on:input="setDesc($event.target.value, language.id)"
@@ -194,7 +194,7 @@
                         spellcheck="false"
                         class="form-control"
                         style="height: 130px"
-                      ></textarea> -->
+                      ></textarea>
                       <small
                         class="form-text text-danger"
                         v-if="errors.has('desc')"
