@@ -174,7 +174,7 @@
                     <fieldset class="form-group mb-3">
                       <vue-editor 
                         id="label-textarea"
-                        :name="'desc' + index"
+                        name="desc"
                         v-on:input="setDesc($event.target.value, language.id)"
                         rows="6"
                         v-model="desc[language.id]"
