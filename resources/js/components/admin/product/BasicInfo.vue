@@ -125,21 +125,6 @@
             </ul>
             <div class="row">
 
-              <div class="col-md-12 col-12">
-                <div class="form-group">
-                  <label class="text-dark">Video URL</label>
-                  <input
-                    type="text"
-                    v-on:input="setVideoUrl($event.target.value)"
-                    class="form-control" v-model="video_url"
-                  />
-                  <small
-                    class="form-text text-danger"
-                    v-if="errors.has('video_url')"
-                    v-text="errors.get('video_url')"
-                  ></small>
-                </div>
-              </div>
               <div class="col-12">
                 <div class="tab-content lang-content" id="v-pills-tabContent">
                   <div
@@ -172,17 +157,7 @@
                       Description ( {{ language.language_name }} )
                     </h6>
                     <fieldset class="form-group mb-3">
-                      <vue-editor 
-                        id="label-textarea"
-                        :name="'desc' + index"
-                        v-on:input="setDesc($event.target.value, language.id)"
-                        v-model="desc[language.id]"
-                        placeholder="Description"
-                        spellcheck="false"
-                        class="form-control"
-                        style="height: 200px"
-                        ></vue-editor>
-                      <!-- <textarea
+                      <textarea
                         id="label-textarea"
                         :name="'desc' + index"
                         v-on:input="setDesc($event.target.value, language.id)"
@@ -193,7 +168,7 @@
                         spellcheck="false"
                         class="form-control"
                         style="height: 130px"
-                      ></textarea> -->
+                      ></textarea>
                       <small
                         class="form-text text-danger"
                         v-if="errors.has('desc')"
@@ -201,6 +176,21 @@
                       ></small>
                     </fieldset>
                   </div>
+                </div>
+              </div>
+              <div class="col-md-12 col-12">
+                <div class="form-group">
+                  <label class="text-dark">Video URL</label>
+                  <input
+                    type="text"
+                    v-on:input="setVideoUrl($event.target.value)"
+                    class="form-control" v-model="video_url"
+                  />
+                  <small
+                    class="form-text text-danger"
+                    v-if="errors.has('video_url')"
+                    v-text="errors.get('video_url')"
+                  ></small>
                 </div>
               </div>
             </div>
@@ -230,9 +220,8 @@
 
 <script>
 import Multiselect from 'vue-multiselect'
-import { VueEditor } from "vue2-editor";
 export default {
-  components: { Multiselect,VueEditor },
+  components: { Multiselect },
   data() {
     return {
       categories: [],

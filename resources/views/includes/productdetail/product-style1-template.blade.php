@@ -87,7 +87,7 @@
                     </div> --}}
                     <div class="mt-2">
                         <h5>Description</h5>
-                        <p class="pro-desc">
+                        <p class="pro-desc" style="white-space: pre-wrap;">
                             {{-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est
                             tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo
                             gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id
