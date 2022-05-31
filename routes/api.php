@@ -149,7 +149,7 @@ Route::group(['prefix' => 'client', 'middleware' => ['auth:customer-api', 'scope
     Route::resource('wishlist', 'API\Web\WishlistController', ['names' => ['index' => 'client.wishlist.index', 'store' => 'client.wishlist.store', 'destroy' => 'client.wishlist.delete']])->except(['edit', 'create', 'update']);
     Route::resource('compare', 'API\Web\CompareController')->except(['edit', 'create', 'update']);
     Route::post('order', 'API\Web\OrderController@store');
-    Route::put('order/{order}', 'API\Web\@store');
+    Route::put('order/{order}', 'API\Web\OrderController@update');
     Route::post('comment', 'API\WOrderController@update');
     Route::post('review', 'API\Web\ReviewController@store');
     Route::resource('cart', 'API\Web\CartController', ['names' => ['index' => 'client.cart.index', 'store' => 'client.cart.store', 'destroy' => 'client.cart.delete']])->except(['edit', 'create', 'update']);
