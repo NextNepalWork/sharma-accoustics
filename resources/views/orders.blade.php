@@ -149,7 +149,7 @@
                         } else {
                             price = data.data[i].order_price;
                         }
-                        orderStatus = data.data[i].order_status === 'Pending' ? data.data[i].order_status + ' / <button type="button" class="btn btn-primary mx-1" onClick="cancelStatus(' + data.data[i].order_id + ')"> Cancel Order</button>' : data.data[i].order_status;
+                        orderStatus = data.data[i].order_status === 'Pending' ? data.data[i].order_status + ' / <button type="button" class="btn btn-primary mx-1" onClick="cancelStatus(' + data.data[i].order_id + ')" title="cancel"> Cancel Order</button>' : data.data[i].order_status;
                         if (data.data[i].order_detail != null && data.data[i].order_detail != 'null' && data.data[i].order_detail != '') {
                             if (data.data[i].order_detail[0].product != null && data.data[i].order_detail[0].product != 'null' && data.data[i].order_detail[0].product != '') {
                                 if (data.data[i].order_detail[0].product.product_type == 'variable') {
@@ -190,7 +190,7 @@
                             '</td>' +
                             '<td class="cart-product-grand-total">' + orderStatus + '</td>' +
                             '<td class="romove-item">' +
-                                '<a href="/orders/'+data.data[i].order_id+'" title="cancel" class="icon">' +
+                                '<a href="/orders/'+data.data[i].order_id+'" title="View" class="icon">' +
                                     '<button type="button" class="btn btn-primary mx-1"> <i class="fa fa-eye"></i> View Detail</button>' +
                                 '</a>' +
                             '</td>' +
