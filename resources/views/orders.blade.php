@@ -137,6 +137,7 @@
                     $("#order-show").html('');
                     for (i = 0; i < data.data.length; i++) {
                         order = data.data[i].order_date.split('T');
+                        // return data.data[i].order_price;
                         if (data.data[i].currency != null && data.data[i].currency != 'null' && data.data[i].currency != '') {
                             if (data.data[i].currency.symbol_position == 'left') {
                                 price = (data.data[i].order_price * +data.data[i].currency.exchange_rate);

@@ -87,6 +87,7 @@ class OrderProcess implements ShouldQueue
                 }
                 $this->parms['coupon_amount'] = $amount * $currency->exchange_rate;
             }
+            // return $stockValidate['data'];
             $this->parms['order_price'] = $stockValidate['data'];
             $this->parms['order_price'] = $this->parms['order_price'] * $currency->exchange_rate;
             $this->parms['order_price'] = $this->parms['order_price'] - $amount;
@@ -168,8 +169,8 @@ class OrderProcess implements ShouldQueue
             $this->parms['customer_id'] = $customer_id;
             $this->parms['currency_id'] = $currency->id;
             $this->parms['currency_value'] = $currency->exchange_rate;
-            
             $sql = Order::create($this->parms);
+            // return ($sql);
             // dd($sql);
             OrderHistory::create([
                 'order_id'=>$sql->id,
