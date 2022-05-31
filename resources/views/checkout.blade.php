@@ -204,9 +204,10 @@
             <button type="button" class="btn btn-success my-3 mx-auto createOrder">Confirm Payment</button>
         </div>
         <div class="row" hidden>
+
             <form action="https://uat.esewa.com.np/epay/main" method="POST" id="esewaForm" class="my-3 mx-auto">
-                <input value="10" name="tAmt" type="hidden">
-                <input value="10" name="amt" type="hidden">
+                <input value="0" name="tAmt" type="hidden">
+                <input value="0" name="amt" type="hidden">
                 <input value="0" name="txAmt" type="hidden">
                 <input value="0" name="psc" type="hidden">
                 <input value="0" name="pdc" type="hidden">
@@ -880,6 +881,7 @@
         });
 
         $(".payment_method").click(function() {
+            // console.log('hi');
             payment_method = $.trim($(".payment_method:checked").val());
             if(payment_method == 'esewa'){
                 $('#esewaForm').parent().attr('hidden', false);
@@ -898,8 +900,11 @@
                     },
                     beforeSend: function() {},
                     success: function(response) {
-                        $("#esewaForm").attr('action', response.ESEWA_URL);
-                        $('#esewaForm input[name="scd"]').val(response.ESEWA_MERCHANT_ID);
+                        // console.log(response);
+                        // $("#esewaForm").attr('action', response.ESEWA_URL);
+                        // $('#esewaForm input[name="scd"]').val(response.ESEWA_MERCHANT_ID);
+                        $('#esewaForm input[name="scd"]').val(response.esewa_key);
+
                     }
                 });
                 $(".stripe_payment").addClass('d-none');
@@ -935,6 +940,7 @@
 
         $("#esewaButton").click(function(e) {
             e.preventDefault();
+            // console.log('hi');
             createOrder();
         });
 
@@ -1018,6 +1024,7 @@
 
 
             payment_method = $(".payment_method:checked").val();
+            // console.log(payment_method);
             cc_number = '';
             cc_expiry_month = '';
             cc_expiry_year = '';
@@ -1028,6 +1035,7 @@
             }else if(payment_method == 'cash_on_delivery'){
                 payment_method = 'cod';
             }
+            
 
             url = '/api/client/order';
 
@@ -1071,9 +1079,11 @@
                 success: function(data) {
                     // console.log(data);
                     if (data.status == 'Success') {
+                        // console.log(payment_method);
                         if(payment_method == 'esewa'){
                             pid = $('#esewaForm input[name=pid]').val() + '?' + data.data.order_id;
                             $('#esewaForm input[name=pid]').val(pid);
+                            // console.log(pid);
                             $('#esewaForm').submit();
                         }else if(payment_method == 'cod'){
                             window.location.href = "{{ url('/thankyou') }}";

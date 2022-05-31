@@ -73,7 +73,7 @@
 </head>
 
 <body class="animation-s1 {{ $data['direction'] === 'rtl' ? 'bodyrtl' : '' }}">
-    <div id="loading"></div>
+    {{-- <div id="loading"></div> --}}
     {{-- <div id="fb-root"></div>
     <script>(function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];

@@ -30,13 +30,23 @@ class OrderService
         $totalPrice = 0;
         foreach ($sql as $data) {
             if (!Gate::allows('isDigital')) {
-                $totalPrice = $totalPrice + (($data->prices - $data->discounts) * $data->qty);
+                if($data->discounts > 0){
+                    $totalPrice = $totalPrice + (($data->discounts) * $data->qty);
+                }else{
+                    $totalPrice = $totalPrice + (($data->prices) * $data->qty);
+                }
+                // $totalPrice = $totalPrice + (($data->prices - $data->discounts) * $data->qty);
                 $qtyValidation = new AvailableQty;
                 $qtyValidation = $qtyValidation->availableQty($data->product_id, $data->product_combination_id, $data->qty);
                 // if (!$qtyValidation) {
                 //     return $this->errorResponseArray('Out of Stock!', 422, $data);
                 // }
             } else {
+                if($data->discounts > 0){
+                    $totalPrice = $totalPrice + (($data->discounts) * $data->qty);
+                }else{
+                    $totalPrice = $totalPrice + (($data->prices) * $data->qty);
+                }
                 $totalPrice = $totalPrice + ($data->prices - $data->discounts);
             }
         }
@@ -47,6 +57,7 @@ class OrderService
     {
         $sql = Cart::type()->customerId($customer_id)->where('is_order', '0');
         $sql = $sql->availableQtys()->get();
+        // dd($sql);
         $sql = $sql->unique();
         return $sql;
     }
@@ -56,10 +67,23 @@ class OrderService
         $products = $productsPoint = [];
         foreach ($sql as $data) {
             $totalPrice = 0;
-            if (!Gate::allows('isDigital'))
-                $totalPrice = $totalPrice + (($data->prices - $data->discounts) * $data->qty);
-            else
-                $totalPrice = $totalPrice + (($data->prices - $data->discounts));
+            if (!Gate::allows('isDigital')){
+                if($data->discounts > 0){
+                    $totalPrice = $totalPrice + (($data->discounts) * $data->qty);
+                }else{
+                    $totalPrice = $totalPrice + (($data->prices) * $data->qty);
+                }
+                // $totalPrice = $totalPrice + (($data->prices - $data->discounts) * $data->qty);
+
+            }
+            else{
+                if($data->discounts > 0){
+                    $totalPrice = $totalPrice + (($data->discounts) * $data->qty);
+                }else{
+                    $totalPrice = $totalPrice + (($data->prices) * $data->qty);
+                }
+                // $totalPrice = $totalPrice + (($data->prices - $data->discounts));
+            }
 
             $parms['total'] = $totalPrice;
             $parms['product_price'] = $data->prices;
