@@ -6,12 +6,19 @@ use App\Http\Resources\Admin\Language as LanguageResource;
 use App\Http\Resources\Admin\Gallary as GallaryResource;
 use App\Http\Resources\Admin\SliderNavigation as SliderNavigationResource;
 use App\Http\Resources\Admin\SliderType as SliderTypeResource;
+use App\Models\Admin\Product;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class Slider extends JsonResource
 {
     public function toArray($request)
     {
+        if($this->slider_navigation->id == '2'){
+            $product = Product::find($this->ref_id);
+            $product_slug = $product->product_slug;
+            $product_id = $product->id;
+            
+        }
         if (\Request::route()->getName() == 'client.slider.index' || \Request::route()->getName() == 'client.slider.show') {
             return [
                 'slider_id' => $this->id,
@@ -22,9 +29,10 @@ class Slider extends JsonResource
                 'slider_type' => isset($this->slider_type->id) ? $this->slider_type->id : '',
                 'gallary' => isset($this->gallary->name) ? $this->gallary->name : '',
                 'language' => isset($this->language->id) ? $this->language->id : '',
-                'slider_url' => $this->url,
+                'slider_url' => ($this->slider_navigation->id == '2') ? '/product/'.$product_id.'/'.$product_slug : $this->url,
             ];
         }
+        
         return [
             'slider_id' => $this->id,
             'slider_title' => $this->title,
