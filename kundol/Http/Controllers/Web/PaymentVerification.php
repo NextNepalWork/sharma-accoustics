@@ -21,6 +21,7 @@ class PaymentVerification extends Controller
             ];
             $orderId = explode('?', $result['productId'])[count(explode('?', $result['productId']))-1];
             Order::where('id', $orderId)->update(array('transaction_id' => $result['refrenceId']));
+            
         }else{
             $result = [
                 'message' => 'Payment Unsuccessful!'

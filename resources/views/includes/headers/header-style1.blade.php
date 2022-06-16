@@ -113,7 +113,7 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle dropdown-custom" data-open="#item2"
-                            href="under-construction.html" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
                             Product
                         </a>
