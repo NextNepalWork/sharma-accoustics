@@ -235,7 +235,15 @@
                             } else {
                                 if (data.data[i].product_combination != null && data.data[i].product_combination != 'null' && data.data[i].product_combination != '') {
                                     productCardPrice = data.data[i].product_combination[0].product_price_symbol;
+                                }else{
+                                    if (data.data[i].product_discount_price == '' || data.data[i].product_discount_price == null || data.data[i].product_discount_price ==
+                                    'null') {
+                                    productCardPrice = data.data[i].product_price_symbol;
+                                    } else {
+                                        productCardPrice = data.data[i].product_discount_price_symbol + '<span>' +data.data[i].product_price_symbol + '</span>';
+                                    }
                                 }
+                                console.log(data.data[i].product_combination);
                             }
                             switch(appendTo){
                                 case 'product-list-section': 
